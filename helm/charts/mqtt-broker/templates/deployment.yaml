@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mqtt-broker
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: mqtt-broker
+  template:
+    metadata:
+      labels:
+        app: mqtt-broker
+    spec:
+      containers:
+      - name: mqtt
+        image: {{ .Values.image }}
+        ports:
+        - containerPort: 1883
+        resources:
+          requests: { cpu: "500m", memory: "512Mi" }
+          limits: { cpu: "2", memory: "2Gi" }

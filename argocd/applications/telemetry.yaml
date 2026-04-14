@@ -1,0 +1,11 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: telemetry
+spec:
+  project: staging
+  source:
+    repoURL: https://github.com/your/repo
+    path: helm/charts/telemetry-ingestor
+  destination:
+    namespace: orbital-staging

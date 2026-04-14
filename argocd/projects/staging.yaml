@@ -1,0 +1,8 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: staging
+spec:
+  destinations:
+  - namespace: orbital-staging
+    server: https://kubernetes.default.svc

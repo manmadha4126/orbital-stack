@@ -1,0 +1,11 @@
+name: Deploy
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - run: docker build -t localhost:5000/app:${{ github.sha }} .
+    - run: docker push localhost:5000/app:${{ github.sha }}
