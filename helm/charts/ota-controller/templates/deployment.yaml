@@ -6,11 +6,21 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      app: ota-controller
   template:
     metadata:
       labels:
         app: ota-controller
     spec:
+      terminationGracePeriodSeconds: 60
       containers:
-      - name: app
-        image: localhost:5000/ota:latest
+        - name: ota
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 7070
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh","-c","sleep 10"]

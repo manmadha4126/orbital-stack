@@ -7,9 +7,9 @@ spec:
     matchLabels:
       app: device-api
   policyTypes:
-  - Ingress
+    - Ingress
   ingress:
-  - from:
-    - namespaceSelector:
-        matchLabels:
-          app.kubernetes.io/name: ingress-nginx
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              app.kubernetes.io/name: ingress-nginx

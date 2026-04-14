@@ -1,7 +1,7 @@
-module "vpc" {
-  source = "./modules/vpc"
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
 }
 
-module "eks" {
-  source = "./modules/eks"
+output "vpc_id" {
+  value = aws_vpc.main.id
 }

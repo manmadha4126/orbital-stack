@@ -4,9 +4,8 @@ metadata:
   name: device-api
   namespace: argocd
 spec:
-  project: staging
   source:
-    repoURL: https://github.com/your-username/orbital-stack
+    repoURL: https://github.com/manmadha4126/orbital-stack
     targetRevision: HEAD
     path: helm/charts/device-api
   destination:
