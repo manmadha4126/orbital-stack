@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: production
+  namespace: argocd
+spec:
+  description: Production environment
+  destinations:
+  - namespace: orbital-production
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - '*'
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  roles:
+  - name: platform-team
+    policies:
+    - p, proj:production:platform-team, applications, sync, production/*, allow

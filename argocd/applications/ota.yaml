@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ota-controller
+  namespace: argocd
+spec:
+  project: staging
+  source:
+    repoURL: https://github.com/your-username/orbital-stack
+    targetRevision: HEAD
+    path: helm/charts/ota-controller
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: orbital-staging
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

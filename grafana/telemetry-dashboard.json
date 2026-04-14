@@ -1,0 +1,19 @@
+{
+  "title": "Telemetry Ingestor",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Messages per Second",
+      "targets": [
+        { "expr": "rate(messages_total[1m])" }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "CPU Usage",
+      "targets": [
+        { "expr": "rate(container_cpu_usage_seconds_total[1m])" }
+      ]
+    }
+  ]
+}
